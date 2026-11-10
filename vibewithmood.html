@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Music Vibe AI</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#1DB954,#121212);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+color:white;
+}
+
+.container{
+width:600px;
+background:rgba(0,0,0,0.8);
+padding:30px;
+border-radius:20px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#1DB954;
+border:none;
+color:white;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+padding:15px;
+background:#222;
+border-radius:12px;
+display:none;
+}
+
+.playlist{
+margin-top:15px;
+}
+
+a{
+color:#1DB954;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎵 Music Vibe Analyzer</h1>
+
+<input type="text"
+id="artist"
+placeholder="Favorite Singer">
+
+<input type="text"
+id="song"
+placeholder="Favorite Song">
+
+<select id="mood">
+<option value="">Select Mood</option>
+<option>Happy</option>
+<option>Sad</option>
+<option>Romantic</option>
+<option>Chill</option>
+<option>Energetic</option>
+</select>
+
+<button onclick="analyzeMusic()">
+Analyze My Vibe
+</button>
+
+<div class="result" id="result">
+
+<h2 id="vibe"></h2>
+
+<p id="description"></p>
+
+<div class="playlist" id="playlist"></div>
+
+</div>
+
+</div>
+
+<script>
+
+function analyzeMusic(){
+
+let artist=document.getElementById("artist").value.toLowerCase();
+let mood=document.getElementById("mood").value;
+
+let vibe="";
+let desc="";
+let playlist="";
+
+if(artist.includes("arijit")){
+
+vibe="❤️ Romantic Soul";
+
+desc="You are emotional, loyal and deeply connected to memories.";
+
+playlist=`
+<a target="_blank"
+href="https://open.spotify.com/search/arijit%20singh">
+Open Spotify Playlist
+</a>
+`;
+}
+
+else if(
+artist.includes("weeknd")
+){
+
+vibe="🌙 Mysterious Night Vibes";
+
+desc="You enjoy aesthetics, night drives and emotional depth.";
+
+playlist=`
+<a target="_blank"
+href="https://open.spotify.com/search/the%20weeknd">
+Open Spotify Playlist
+</a>
+`;
+}
+
+else if(
+artist.includes("bts")
+){
+
+vibe="🔥 Passionate Dreamer";
+
+desc="You are ambitious, hopeful and energetic.";
+
+playlist=`
+<a target="_blank"
+href="https://open.spotify.com/search/bts">
+Open Spotify Playlist
+</a>
+`;
+}
+
+else{
+
+vibe="🎵 Music Explorer";
+
+desc="You enjoy discovering unique sounds and different genres.";
+
+playlist=`
+<a target="_blank"
+href="https://open.spotify.com">
+Explore Spotify
+</a>
+`;
+}
+
+if(mood==="Happy"){
+desc += " You spread positive energy.";
+}
+
+if(mood==="Sad"){
+desc += " You are reflective and thoughtful.";
+}
+
+if(mood==="Energetic"){
+desc += " You love excitement and action.";
+}
+
+if(mood==="Chill"){
+desc += " You seek peace and comfort.";
+}
+
+if(mood==="Romantic"){
+desc += " You value love and connection.";
+}
+
+document.getElementById("vibe").innerHTML=vibe;
+document.getElementById("description").innerHTML=desc;
+document.getElementById("playlist").innerHTML=playlist;
+document.getElementById("result").style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
